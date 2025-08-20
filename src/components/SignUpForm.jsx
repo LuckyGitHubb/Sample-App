@@ -22,7 +22,7 @@ function SignUpForm() {
         if(!password) {newErrors.password = 'Password is required'}
         else if(password.length < 6) {newErrors.password = 'Password must be at least 6 characters'}
         else if (/^\d+$/.test(password)) {
-  newErrors.password = 'Password cannot be only numbers'
+  newErrors.password = 'Password must contain only letters'
 }
         if(!confirmPassword) newErrors.confirmPassword = 'Confirm Password is required'
         if(password !== confirmPassword) {
