@@ -5,7 +5,7 @@ import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 function SignUpForm() {
     const[name,setName] = useState("")
     const[email,setEmail] = useState("")
-    const[password,setPassword] = useState("")
+    const[password,setPassword] = useState('')
     const[showPassword,setShowPassword] = useState('')
     const[showConfirmPassword,setShowConfirmPassword] = useState('')
     const[confirmPassword,setConfirmPassword] = useState("")
@@ -19,7 +19,11 @@ function SignUpForm() {
         if(!name) newErrors.name = 'Name is required'
         if(!email) {newErrors.email = 'Email is required'}
         else if (!email.includes('@') || !email.endsWith('.com') ){newErrors.email='Email is not valid'}
-        if(!password) newErrors.password = 'Password is required'
+        if(!password) {newErrors.password = 'Password is required'}
+        else if(password.length < 6) {newErrors.password = 'Password must be at least 6 characters'}
+        else if (/^\d+$/.test(password)) {
+  newErrors.password = 'Password cannot be only numbers'
+}
         if(!confirmPassword) newErrors.confirmPassword = 'Confirm Password is required'
         if(password !== confirmPassword) {
             newErrors.confirmPassword = 'Confirm password is not matched'
